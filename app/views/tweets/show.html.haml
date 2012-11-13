@@ -1,0 +1,30 @@
+%p#notice= notice
+
+%p
+  %b Tweeted at:
+  = @tweet.tweeted_at
+%p
+  %b Tweet:
+  = @tweet.tweet_id
+%p
+  %b Text:
+  = @tweet.text
+%p
+  %b In reply to status:
+  = @tweet.in_reply_to_status_id
+%p
+  %b In reply to user:
+  = @tweet.in_reply_to_user_id
+%p
+  %b In reply to screen name:
+  = @tweet.in_reply_to_screen_name
+%p
+  %b User:
+  = @tweet.user_id
+%p
+  %b Geo:
+  = @tweet.geo
+
+= link_to 'Edit', edit_tweet_path(@tweet)
+\|
+= link_to 'Back', tweets_path

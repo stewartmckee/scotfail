@@ -1,0 +1,27 @@
+%h1 Listing tweets
+
+%table
+  %tr
+    %th Screen Name
+    %th Text
+    %th Classification
+    %th
+    %th
+    %th
+
+  - @tweets.each do |tweet|
+    %tr
+      %td= tweet.user.screen_name
+      %td= tweet.text
+      %td
+        %nobr
+          = link_to("[positive]", classify_tweet_path(:id => tweet.id, :classification => "positive"), :remote => true, :class => (tweet.positive? ? "classified" : ""))
+          = link_to("[neutral]", classify_tweet_path(:id => tweet.id, :classification => "neutral"), :remote => true, :class => (tweet.neutral? ? "classified" : ""))
+          = link_to("[negative]", classify_tweet_path(:id => tweet.id, :classification => "negative"), :remote => true, :class => (tweet.negative? ? "classified" : ""))
+      %td= link_to 'Show', tweet
+      %td= link_to 'Edit', edit_tweet_path(tweet)
+      %td= link_to 'Destroy', tweet, method: :delete, data: { confirm: 'Are you sure?' }
+
+%br
+
+= link_to 'New Tweet', new_tweet_path

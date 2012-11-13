@@ -1,0 +1,17 @@
+--- !ruby/object:Classifier::Bayes
+categories:
+  :Positive: {}
+  :Neutral: {}
+  :Negative:
+    :wonder: 1
+    :scotrail: 1
+    :get: 1
+    :anyth: 1
+    :other: 1
+    :abus: 1
+    :twitter: 1
+    :scotfail: 1
+    :@: 1
+    :?: 1
+    :#: 1
+total_words: 11

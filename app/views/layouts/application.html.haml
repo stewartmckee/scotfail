@@ -1,0 +1,23 @@
+!!!
+%html.no-js{:lang => "en"}
+  %head
+    %meta{:charset => "utf-8"}
+    %meta{:content => "blendTrans(Duration=0.2)", "http-equiv" => "Page-Enter"}
+    %meta{:content => "blendTrans(Duration=0.2)", "http-equiv" => "Page-Exit"}
+    %title Scotfail
+    %meta{:content => "width=device-width, initial-scale=1.0", :name => "viewport"}
+    %meta{:content => "", :name => "description"}
+    %meta{:content => "", :name => "author"}
+    = stylesheet_link_tag    "application", :media => "all"
+    = javascript_include_tag "application"
+    = csrf_meta_tags
+    %link{:href => "/assets/images/favicon.png", :rel => "shortcut icon"}
+    %link{:href => "/assets/twitter/bootstrap.css", :rel => "stylesheet"}
+    %link{:href => "/assets/twitter/responsive.css", :rel => "stylesheet"}
+    %link{:href => "/assets/jquery-ui-1.8.23.custom.css", :rel => "stylesheet"}
+    %script{:src => "/assets/plugins/modernizr.custom.32549.js"}
+    / Le HTML5 shim, for IE6-8 support of HTML5 elements
+    /[if lt IE 9]
+      <script src="http://html5shim.googlecode.com/svn/trunk/html5.js"></script>
+  %body
+    = yield

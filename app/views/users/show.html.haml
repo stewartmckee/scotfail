@@ -1,0 +1,27 @@
+%p#notice= notice
+
+%p
+  %b Twitter:
+  = @user.twitter_id
+%p
+  %b Name:
+  = @user.name
+%p
+  %b Screen name:
+  = @user.screen_name
+%p
+  %b Location:
+  = @user.location
+%p
+  %b Description:
+  = @user.description
+%p
+  %b Url:
+  = @user.url
+%p
+  %b Profile image url:
+  = @user.profile_image_url
+
+= link_to 'Edit', edit_user_path(@user)
+\|
+= link_to 'Back', users_path
