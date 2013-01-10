@@ -7,7 +7,7 @@
     end
   end
   def down
-    remove_column :tweets, :classification
+    #remove_column :tweets, :classification
     
   end
 end
