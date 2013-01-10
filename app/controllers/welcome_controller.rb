@@ -4,7 +4,7 @@ class WelcomeController < ApplicationController
     Tweet.today.group_by{|t| t.classification}.map{|classification, tweets| @today_counts[classification.downcase.to_sym] = tweets.count}
     @tweets = Tweet.latest
 
-    first_date = Date.parse(Tweet.first.tweeted_at.to_s)
+    first_date = Tweet.first ? Date.parse(Tweet.first.tweeted_at.to_s) : DateTime.now
     classified_tweets = Tweet.by_classification
 
 
