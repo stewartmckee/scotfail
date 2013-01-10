@@ -11,7 +11,7 @@ class WelcomeController < ApplicationController
       @first_line_graph_tweet = Tweet.last30days.first ? Tweet.last30days.first.tweeted_at : DateTime.now
       @line_graph_data = Tweet.last30days.count_by_date_and_classification
 
-      @first_pie_chart_tweet = Tweet.all.first.tweeted_at
+      @first_pie_chart_tweet = Tweet.all.first.tweeted_at || DateTime.now
       @pie_chart_data = Tweet.count_by_classification
     end
   end
