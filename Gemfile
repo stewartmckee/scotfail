@@ -47,4 +47,5 @@ gem "redis"
 gem "whenever", :require => false
 gem "classifier"
 gem "madeleine"
+gem "heroku"
 

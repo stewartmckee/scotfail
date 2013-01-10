@@ -1,5 +1,5 @@
 class Tweet < ActiveRecord::Base
-  attr_accessible :geo, :in_reply_to_screen_name, :in_reply_to_status_id, :in_reply_to_user_id, :text, :tweet_id, :tweeted_at, :user_id, :classified
+  attr_accessible :geo, :in_reply_to_screen_name, :in_reply_to_status_id, :in_reply_to_user_id, :text, :tweet_id, :tweeted_at, :user_id, :classified, :classification
 
   belongs_to :user, :foreign_key => :user_id, :primary_key => :twitter_id
 
@@ -7,6 +7,13 @@ class Tweet < ActiveRecord::Base
   scope :last30days, lambda {where("DATE(tweeted_at) > ?", 30.days.ago)}
   scope :latest, lambda {order("tweeted_at DESC").limit(5)}
   scope :unclassified, lambda {where("classified = ?", false)}
+  
+  before_save :update_classification
+  
+  def update_classification
+    self.classification = self.classify
+    puts "classification: #{self.classification}"
+  end
   
   def self.count_by_date_and_classification
     order("DATE(tweeted_at)").group("DATE(tweeted_at)").count
@@ -59,7 +66,7 @@ class Tweet < ActiveRecord::Base
     classified_tweets
   end
   
-  def classification
+  def classify
     BAYESIAN.classify(text)
   end
 

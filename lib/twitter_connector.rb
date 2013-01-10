@@ -30,7 +30,8 @@ class TwitterConnector
     else
       @tweets = Twitter.search("scotrail OR scotfail", :count => 100, :since_id => Tweet.order("tweeted_at DESC").limit(1).first.tweet_id, :result_type => "recent")
     end
-    @tweets = @tweets.statuses.reject{|tweet| BANNED_USERS.include?(tweet.user.id)}
+    ap @tweets
+    @tweets = @tweets.statuses.reject{|tweet| BANNED_USERS.include?(tweet.user.id) || tweet.text.starts_with?("@")}
     @tweets.each do |tweet|
       unless Tweet.exists?(:tweet_id => tweet.id)
         tweets_created += 1
