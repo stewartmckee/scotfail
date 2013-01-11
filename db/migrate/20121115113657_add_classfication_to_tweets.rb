@@ -8,6 +8,5 @@
   end
   def down
     remove_column :tweets, :classification
-    
   end
 end
