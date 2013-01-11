@@ -1,6 +1,6 @@
 class WelcomeController < ApplicationController
   def index
-    @today_counts = {}
+    @today_counts = {:negative => 0, :positive => 0, :neutral => 0}
     Tweet.today.group_by{|t| t.classification}.map{|classification, tweets| @today_counts[classification.downcase.to_sym] = tweets.count}
     @tweets = Tweet.latest
 
